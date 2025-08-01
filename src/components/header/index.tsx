@@ -64,9 +64,9 @@ export function Header() {
             title="logo"
             style={{ backgroundImage: "url(/logo.png)" }}
           />
-          <span className="text-2xl font-brand line-height-none!">
-            <p>Xiaoqiang</p>
-            <p className="mt--1">
+          <span className="font-brand line-height-none!">
+            <p className="text-xl">Xiaoqiang</p>
+            <p className="mt--1 text-3xl">
               <span className="color-primary-6">N</span>
               <span>ews</span>
             </p>
