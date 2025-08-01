@@ -6,9 +6,9 @@ const pwaOption: Partial<VitePWAOptions> = {
   includeAssets: ["icon.svg", "apple-touch-icon.png"],
   filename: "swx.js",
   manifest: {
-    name: "NewsNow",
-    short_name: "NewsNow",
-    description: "Elegant reading of real-time and hottest news",
+    name: "XiaoqiangNews",
+    short_name: "XiaoqiangNews",
+    description: "全网热门资讯聚合阅读器，汇集全球热点新闻，提供优雅的阅读体验",
     theme_color: "#F14D42",
     icons: [
       {
