@@ -1,7 +1,7 @@
 import { useIsFetching } from "@tanstack/react-query"
 import type { SourceID } from "@shared/types"
 import { NavBar } from "../navbar"
-import { Menu } from "./menu"
+import { Menu, MobileMenu } from "./menu"
 import { currentSourcesAtom, goToTopAtom } from "~/atoms"
 
 function GoTop() {
@@ -60,7 +60,7 @@ export function Header() {
           className="flex gap-2 items-center"
         >
           <div
-            className="h-10 w-10 bg-cover"
+            className="h-12 w-12 bg-cover"
             title="logo"
             style={{ backgroundImage: "url(/logo.png)" }}
           />
@@ -82,6 +82,7 @@ export function Header() {
         <GoTop />
         <Refresh />
         <Menu />
+        <MobileMenu />
       </span>
     </>
   )
