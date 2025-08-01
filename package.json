@@ -1,17 +1,17 @@
 {
-  "name": "newsnow",
+  "name": "xiaoqiangnews",
   "type": "module",
   "version": "0.0.31",
   "private": true,
   "packageManager": "pnpm@10.5.2",
   "author": {
-    "url": "https://github.com/ourongxing/",
-    "email": "orongxing@gmail.com",
-    "name": "ourongxing"
+    "url": "https://github.com/xiaoqiangclub/",
+    "email": "xiaoqiangclub@hotmail.com",
+    "name": "xiaoqiangclub"
   },
-  "homepage": "https://github.com/ourongxing/newsnow",
+  "homepage": "https://github.com/xiaoqiangclub/newsnow",
   "scripts": {
-    "dev": "npm run presource && vite dev",
+    "dev": "npm run presource && vite dev --host",
     "build": "npm run presource && vite build",
     "lint": "eslint",
     "presource": "tsx ./scripts/favicon.ts && tsx ./scripts/source.ts",

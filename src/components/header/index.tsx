@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router"
 import { useIsFetching } from "@tanstack/react-query"
 import type { SourceID } from "@shared/types"
 import { NavBar } from "../navbar"
@@ -7,11 +6,14 @@ import { currentSourcesAtom, goToTopAtom } from "~/atoms"
 
 function GoTop() {
   const { ok, fn: goToTop } = useAtomValue(goToTopAtom)
+  if (!ok) {
+    return null
+  }
   return (
     <button
       type="button"
       title="Go To Top"
-      className={$("i-ph:arrow-fat-up-duotone", ok ? "op-50 btn" : "op-0")}
+      className="i-ph:arrow-fat-up-duotone op-50 btn"
       onClick={goToTop}
     />
   )
@@ -20,12 +22,17 @@ function GoTop() {
 function Refresh() {
   const currentSources = useAtomValue(currentSourcesAtom)
   const { refresh } = useRefetch()
-  const refreshAll = useCallback(() => refresh(...currentSources), [refresh, currentSources])
+  const refreshAll = useCallback(
+    () => refresh(...currentSources),
+    [refresh, currentSources],
+  )
 
   const isFetching = useIsFetching({
     predicate: (query) => {
       const [type, id] = query.queryKey as ["source" | "entire", SourceID]
-      return (type === "source" && currentSources.includes(id)) || type === "entire"
+      return (
+        (type === "source" && currentSources.includes(id)) || type === "entire"
+      )
     },
   })
 
@@ -33,7 +40,10 @@ function Refresh() {
     <button
       type="button"
       title="Refresh"
-      className={$("i-ph:arrow-counter-clockwise-duotone btn", isFetching && "animate-spin i-ph:circle-dashed-duotone")}
+      className={$(
+        "i-ph:arrow-counter-clockwise-duotone btn",
+        isFetching && "animate-spin i-ph:circle-dashed-duotone",
+      )}
       onClick={refreshAll}
     />
   )
@@ -43,18 +53,24 @@ export function Header() {
   return (
     <>
       <span className="flex justify-self-start">
-        <Link to="/" className="flex gap-2 items-center">
-          <div className="h-10 w-10 bg-cover" title="logo" style={{ backgroundImage: "url(/icon.svg)" }} />
+        <a
+          href="https://xiaoqiangclub.github.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex gap-2 items-center"
+        >
+          <div
+            className="h-10 w-10 bg-cover"
+            title="logo"
+            style={{ backgroundImage: "url(/logo.png)" }}
+          />
           <span className="text-2xl font-brand line-height-none!">
-            <p>News</p>
+            <p>Xiaoqiang</p>
             <p className="mt--1">
               <span className="color-primary-6">N</span>
-              <span>ow</span>
+              <span>ews</span>
             </p>
           </span>
-        </Link>
-        <a target="_blank" href={`${Homepage}/releases/tag/v${Version}`} className="btn text-sm ml-1 font-mono">
-          {`v${Version}`}
         </a>
       </span>
       <span className="justify-self-center">
