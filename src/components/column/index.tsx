@@ -1,6 +1,5 @@
 import type { FixedColumnID } from "@shared/types"
 import { useTitle } from "react-use"
-import { NavBar } from "../navbar"
 import { Dnd } from "./dnd"
 import { currentColumnIDAtom } from "~/atoms"
 
@@ -10,13 +9,10 @@ export function Column({ id }: { id: FixedColumnID }) {
     setCurrentColumnID(id)
   }, [id, setCurrentColumnID])
 
-  useTitle(`XiaoqiangNews | ${metadata[id].name}`)
+  useTitle("XiaoqiangNews | 全网热门资讯")
 
   return (
     <>
-      <div className="flex justify-center md:hidden mb-6">
-        <NavBar />
-      </div>
       {id === currentColumnID && <Dnd />}
     </>
   )

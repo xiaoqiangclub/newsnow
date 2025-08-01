@@ -6,15 +6,11 @@ export function Menu() {
     <button
       type="button"
       onClick={toggleDark}
-      className="btn"
+      className={$(
+        "btn",
+        isDark ? "i-ph-moon-stars-duotone" : "i-ph-sun-dim-duotone",
+      )}
       title={isDark ? "切换到浅色模式" : "切换到深色模式"}
-    >
-      <span
-        className={$(
-          "inline-block",
-          isDark ? "i-ph-moon-stars-duotone" : "i-ph-sun-dim-duotone",
-        )}
-      />
-    </button>
+    />
   )
 }
